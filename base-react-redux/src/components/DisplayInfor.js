@@ -1,4 +1,6 @@
 import React from "react";
+import "./DisplayInfor.scss";
+import logo from "./../logo.svg";
 
 class DisplayInfor extends React.Component {
   state = {
@@ -11,11 +13,26 @@ class DisplayInfor extends React.Component {
     });
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      document.title = "Halo";
+    }, 3000);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.listUsers !== prevProps.listUsers) {
+      if (this.props.listUsers.length === 5) {
+        alert("you got 5 users");
+      }
+    }
+  }
+
   render() {
     const { listUsers } = this.props;
     //props => viết tắt của properties
     return (
-      <div>
+      <div className="display-infor-container">
+        <img src={logo}></img>
         <div>
           <span
             onClick={() => {
@@ -31,8 +48,17 @@ class DisplayInfor extends React.Component {
             {listUsers.map((user) => {
               return (
                 <div key={user.id} className={user.age > 18 ? "red" : "green"}>
-                  <div>My name is {user.name}</div>
-                  <div>My age is {user.age}</div>
+                  <div>
+                    <div>My name is {user.name}</div>
+                    <div>My age is {user.age}</div>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => this.props.handleDeleteUser(user.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                   <br></br>
                 </div>
               );

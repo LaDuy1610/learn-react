@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DisplayInfor.scss";
 import logo from "./../logo.svg";
 
@@ -72,20 +72,21 @@ import logo from "./../logo.svg";
 
 const DisplayInfor = (props) => {
   const { listUsers } = props;
+  const [isShow, setShowHide] = useState(true);
+  const hadleShowHide = () => {
+    setShowHide(!isShow);
+  };
+
   return (
     <div className="display-infor-container">
-      {/* <img src={logo}></img>
+      {/* <img src={logo}></img> */}
       <div>
-        <span
-          onClick={() => {
-            this.hadleShowHide();
-          }}
-        >
-          {this.state.isShow === true ? "Hide" : "Show"}
+        <span onClick={() => hadleShowHide()}>
+          {isShow === true ? "Hide" : "Show"}
         </span>
-      </div> */}
+      </div>
 
-      {true && (
+      {isShow && (
         <div>
           {listUsers.map((user) => {
             return (

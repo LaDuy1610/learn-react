@@ -5,15 +5,15 @@ import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
 import MyComponent from "./components/MyComponent";
 import React from "react";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App-container">
-        <MyComponent></MyComponent>
-      </div>
-    );
-  }
-}
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <div className="App-container">
+//         <MyComponent></MyComponent>
+//       </div>
+//     );
+//   }
+// }
 
 // const App = () => {
 //   const count = useSelector((state) => state.counter.count);
@@ -33,5 +33,16 @@ class App extends React.Component {
 //     </div>
 //   );
 // };
+
+const App = () => {
+  const count = useSelector((state) => state.counter.count);
+  const dispatch = useDispatch();
+
+  return (
+    <div className="App-container">
+      <MyComponent></MyComponent>
+    </div>
+  );
+};
 
 export default App;

@@ -1,4 +1,5 @@
 import "./App.scss";
+import Header from "./components/Header/Header";
 
 // class App extends React.Component {
 //   render() {
@@ -30,7 +31,7 @@ import "./App.scss";
 // };
 
 const App = () => {
-  return <div className="app-container">hello world</div>;
+  return <Header></Header>;
 };
 
 export default App;

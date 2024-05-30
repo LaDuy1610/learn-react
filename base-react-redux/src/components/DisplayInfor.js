@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfor.scss";
 import logo from "./../logo.svg";
 
@@ -76,6 +76,14 @@ const DisplayInfor = (props) => {
   const hadleShowHide = () => {
     setShowHide(!isShow);
   };
+  console.log("call me");
+
+  useEffect(() => {
+    if (listUsers.length === 0) {
+      alert("end");
+    }
+    console.log("call me useEffect");
+  }, [listUsers]);
 
   return (
     <div className="display-infor-container">

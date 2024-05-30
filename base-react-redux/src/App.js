@@ -1,5 +1,6 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
+import { Link } from "react-router-dom";
 
 // class App extends React.Component {
 //   render() {
@@ -31,7 +32,22 @@ import Header from "./components/Header/Header";
 // };
 
 const App = () => {
-  return <Header></Header>;
+  return (
+    <div>
+      <Header></Header>
+      <div>
+        test link
+        <div>
+          <button>
+            <Link to="/users">User page</Link>
+          </button>
+          <button>
+            <Link to="/admins">Admin page</Link>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default App;

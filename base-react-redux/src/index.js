@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./components/Home/HomePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,9 +16,11 @@ root.render(
     {/* <React.StrictMode> */}
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App></App>}></Route>
-        <Route path="users" element={<User></User>}></Route>
-        <Route path="admins" element={<Admin></Admin>}></Route>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="users" element={<User />} />
+          <Route path="admins" element={<Admin />} />
+        </Route>
       </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}

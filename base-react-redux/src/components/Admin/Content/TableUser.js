@@ -2,7 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TableUser = (props) => {
-  const { listUsers, handleClickBtnUpdate, handleClickBtnView } = props;
+  const {
+    listUsers,
+    handleClickBtnUpdate,
+    handleClickBtnView,
+    handleClickBtnDelete,
+  } = props;
 
   return (
     <>
@@ -39,7 +44,10 @@ const TableUser = (props) => {
                     >
                       <FontAwesomeIcon icon={faEdit} />
                     </button>
-                    <button className="btn btn-danger">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleClickBtnDelete(item)}
+                    >
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
                   </td>

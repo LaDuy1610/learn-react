@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { FcPlus } from "react-icons/fc";
-import { toast } from "react-toastify";
-import { putUpdateUser } from "../../../services/apiService";
 import _ from "lodash";
 
 const ModalViewUser = (props) => {
@@ -11,7 +8,6 @@ const ModalViewUser = (props) => {
   const handleClose = () => {
     setShow(false);
     setEmail("");
-    setPassword("");
     setUsername("");
     setRole("USER");
     setPreviewImage("");
@@ -19,10 +15,8 @@ const ModalViewUser = (props) => {
   };
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [role, setRole] = useState("USER");
-  const [image, setImage] = useState("");
   const [previewImage, setPreviewImage] = useState("");
 
   useEffect(() => {
@@ -38,10 +32,6 @@ const ModalViewUser = (props) => {
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
       <Modal
         className="modal-add-user"
         show={show}
@@ -50,7 +40,7 @@ const ModalViewUser = (props) => {
         backdrop="static"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update an user</Modal.Title>
+          <Modal.Title>View an user</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -60,16 +50,6 @@ const ModalViewUser = (props) => {
                 type="email"
                 className="form-control"
                 value={email}
-                disabled
-              />
-            </div>
-
-            <div className="col-md-6">
-              <label className="form-label">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                value={password}
                 disabled
               />
             </div>

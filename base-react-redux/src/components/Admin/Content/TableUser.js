@@ -1,28 +1,15 @@
-import { useEffect, useState } from "react";
-import { getAllUsers } from "../../../services/apiService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TableUser = (props) => {
-  const [listUsers, setListUsers] = useState([]);
-  useEffect(() => {
-    fetchListUsers();
-  }, []);
-
-  const fetchListUsers = async () => {
-    let res = await getAllUsers();
-
-    if (res.EC === 0) {
-      setListUsers(res.DT);
-    }
-  };
+  const { listUsers, handleClickBtnUpdate, handleClickBtnView } = props;
 
   return (
     <>
       <table className="table table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">No</th>
+            <th scope="col">ID</th>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
@@ -40,10 +27,16 @@ const TableUser = (props) => {
                   <td>{item.email}</td>
                   <td>{item.role}</td>
                   <td>
-                    <button className="btn btn-secondary">
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => handleClickBtnView(item)}
+                    >
                       <FontAwesomeIcon icon={faEye} />
                     </button>
-                    <button className="btn btn-warning mx-3">
+                    <button
+                      className="btn btn-warning mx-3"
+                      onClick={() => handleClickBtnUpdate(item)}
+                    >
                       <FontAwesomeIcon icon={faEdit} />
                     </button>
                     <button className="btn btn-danger">

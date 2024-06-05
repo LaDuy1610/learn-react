@@ -57,7 +57,7 @@ const TableUser = (props) => {
 
           {listUsers && listUsers.length === 0 && (
             <tr>
-              <td colSpan={4}>Not Found Data</td>
+              <td colSpan={5}>Not Found Data</td>
             </tr>
           )}
         </tbody>

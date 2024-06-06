@@ -1,4 +1,6 @@
 import "./App.scss";
+import Header from "./components/Header/Header";
+import { Outlet } from "react-router-dom";
 
 // class App extends React.Component {
 //   render() {
@@ -30,7 +32,19 @@ import "./App.scss";
 // };
 
 const App = () => {
-  return <div className="app-container">hello world</div>;
+  return (
+    <div className="app-container">
+      <div className="header-container">
+        <Header />
+      </div>
+      <div className="main-container">
+        <div className="sidenav-container"></div>
+        <div className="app-contain">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default App;

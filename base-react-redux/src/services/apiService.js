@@ -36,7 +36,7 @@ const deleteUser = (userId) => {
 };
 
 const postLogin = (email, password) => {
-  return axios.post("api/v1/login", { email: email, password: password });
+  return axios.post("api/v1/login", { email, password, delay: 4000 });
 };
 
 const postRegister = (email, password, username) => {

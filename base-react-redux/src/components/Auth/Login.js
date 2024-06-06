@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { toast } from "react-toastify";
+import { ImSpinner10 } from "react-icons/im";
+
 import "./Login.scss";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../../services/apiService";
-import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { doLogin } from "../../redux/action/userAction";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,16 +36,20 @@ const Login = (props) => {
       toast.error("Invalid password");
       return;
     }
+    setIsLoading(true);
+
     //submitAPI
     let data = await postLogin(email, password);
 
     if (data && data.EC === 0) {
       dispatch(doLogin(data));
       toast.success(data.EM);
+      setIsLoading(false);
       navigate("/");
     }
 
     if (data && data.EC !== 0) {
+      setIsLoading(false);
       toast.error(data.EM);
     }
   };
@@ -76,8 +83,16 @@ const Login = (props) => {
         </div>
         <span className="forgot-password">Forgot password ?</span>
         <div>
-          <button className="btn-submit" onClick={() => handleLogin()}>
-            Login
+          <button
+            className="btn-submit"
+            disabled={isLoading}
+            onClick={() => handleLogin()}
+          >
+            {isLoading === true ? (
+              <ImSpinner10 className="loader-icon" />
+            ) : (
+              <span>Login</span>
+            )}
           </button>
         </div>
         <div className="text-center">

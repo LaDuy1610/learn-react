@@ -21,9 +21,11 @@ const DetailQuiz = (props) => {
     let res = await getDataQuiz(quizId);
     if (res && res.EC === 0) {
       let raw = res.DT;
+
       let data = _.chain(raw)
         .groupBy("id")
         .map((value, key) => {
+          console.log(value);
           let answers = [];
           let questionDescription,
             image = null;
@@ -35,7 +37,8 @@ const DetailQuiz = (props) => {
             answers.push(item.answers);
           });
           return { questionId: key, answers, questionDescription, image };
-        }).value;
+        })
+        .value();
 
       setDataQuiz(data);
     }
@@ -61,7 +64,7 @@ const DetailQuiz = (props) => {
         </div>
         <hr />
         <div className="q-body">
-          <img />
+          <img alt="da fix"/>
         </div>
         <div className="q-content">
           <Question

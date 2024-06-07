@@ -11,7 +11,7 @@ const Question = (props) => {
     <>
       {data.image && (
         <div className="q-image">
-          <img src={`data:image/jpeg;base64,${data.image}`} />
+          <img src={`data:image/jpeg;base64,${data.image}`} alt="alt" />
         </div>
       )}
 

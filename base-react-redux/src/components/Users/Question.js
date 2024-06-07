@@ -40,3 +40,5 @@ const Question = (props) => {
     </>
   );
 };
+
+export default Question;

@@ -1,7 +1,11 @@
-const User = (props) => {
-    return(
-        <div>User component</div>
-    );
-}
+import ListQuiz from "./ListQuiz";
 
-export default User
+const User = (props) => {
+  return (
+    <div>
+      <ListQuiz />
+    </div>
+  );
+};
+
+export default User;

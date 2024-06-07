@@ -10,6 +10,13 @@ import ManageUser from "./components/Admin/Content/ManageUser";
 import DashBoard from "./components/Admin/Content/DashBoard";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import DetailQuiz from "./components/Users/DetailQuiz";
+
+const NotFound = () => {
+  return (
+    <div className="container mt-3 alert alert-danger">Not Found Data</div>
+  );
+};
 
 const Layout = () => {
   return (
@@ -19,6 +26,8 @@ const Layout = () => {
           <Route index element={<HomePage />} />
           <Route path="users" element={<User />} />
         </Route>
+        <Route path="/quiz/:id" element={<DetailQuiz />} />
+
         <Route path="/admins" element={<Admin />}>
           <Route index element={<DashBoard />} />
           <Route path="manage-users" element={<ManageUser />} />
@@ -26,6 +35,8 @@ const Layout = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
       <ToastContainer

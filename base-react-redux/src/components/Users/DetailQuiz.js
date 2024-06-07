@@ -64,7 +64,7 @@ const DetailQuiz = (props) => {
         </div>
         <hr />
         <div className="q-body">
-          <img alt="da fix"/>
+          <img alt="" />
         </div>
         <div className="q-content">
           <Question
